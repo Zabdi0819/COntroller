@@ -1,21 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { ImageBackground, StyleSheet } from "react-native";
-import {
-  Box,
-  Button,
-  ScrollView,
-  Stack,
-  Divider,
-  Text,
-  FormControl,
-  Input,
-  Image,
-  Center,
-  NativeBaseProvider,
-  Fab,
-  Icon,
-  Heading,
-} from "native-base";
+import { Box,  Button,  ScrollView,  Stack,  Divider,  Text,  FormControl,  Input,  Image,  Center,
+  NativeBaseProvider, Fab,  Icon,  Heading,} from "native-base";
 import { Ionicons } from "@expo/vector-icons";
 import axios from "axios";
 

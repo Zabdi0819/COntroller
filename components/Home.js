@@ -1,11 +1,14 @@
 import React, {useState} from "react";
-import { View, Text} from 'native-base'
-  
-  const Home = () =>{
+import {  Text} from 'native-base';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+const TabBottom = createBottomTabNavigator();
+
+  const Home = (navigation) =>{
     return(
-      <View>
-        <Text>This is home</Text>
-      </View>
+      <Text>
+        This is home
+      </Text>
     )
   }
 

@@ -1,19 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ImageBackground, StyleSheet } from "react-native";
-import {
-  Box,
-  Button,
-  ScrollView,
-  Stack,
-  Divider,
-  Text,
-  FormControl,
-  Input,
-  Image,
-  Center,
-  NativeBaseProvider,
-  Heading,
-} from "native-base";
+import { Box, Button, ScrollView, Stack, Divider, Text, FormControl, Input, Image, Center, NativeBaseProvider,
+  Heading, } from "native-base";
 import axios from "axios";
 
 const Login = ({ navigation }) => {
@@ -23,7 +11,7 @@ const Login = ({ navigation }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-    //action: 'login'
+    action: 'login'
   });
   const [errors, setErrors] = useState({});
   var pattern = new RegExp(

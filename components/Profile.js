@@ -2,13 +2,13 @@ import React, {useState} from "react";
 import { View, Text} from 'native-base';
 
 
-  const History = () =>{
+  const Profile = () =>{
     return(
       
       <Text>
-        This is History Screen
+        This is Profile Screen
       </Text>
     )
   }
 
-  export default History;
+  export default Profile;

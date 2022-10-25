@@ -82,7 +82,7 @@ const Login = ({ navigation }) => {
 
     if (Object.keys(response.data).length >= 1) {
       console.log("email", response.data[0].email);
-      navigation.navigate("Home", { email: response.data[0].email });
+      navigation.navigate("Nav", { email: response.data[0].email });
       console.log("navigation", "ok");
     } else {
       console.log("retry");

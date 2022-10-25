@@ -1,14 +1,31 @@
 import React, {useState} from "react";
-import { View, Text} from 'native-base';
-
+import { ImageBackground, StyleSheet } from "react-native";
+import {  Text, View, Switch, NativeBaseProvider, ScrollView} from 'native-base';
 
   const Profile = () =>{
+    const imageBG = require("../assets/Bg_login.jpg");
     return(
-      
-      <Text>
-        This is Profile Screen
-      </Text>
+      <ImageBackground source={imageBG} resizeMode="cover" style={styles.image}>
+        <NativeBaseProvider>
+         <ScrollView w="100%">
+          <Text color="white">
+            This is profile
+          </Text>
+      </ScrollView>
+      </NativeBaseProvider>
+      </ImageBackground>
     )
   }
-
+ 
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      alignItems: "center",
+      justifyContent: "center"
+    },
+    image: {
+      flex: 1,
+      justifyContent: "center",
+    },
+  });
   export default Profile;

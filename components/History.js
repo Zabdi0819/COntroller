@@ -9,7 +9,7 @@ import {  Text, View, Switch, NativeBaseProvider, ScrollView} from 'native-base'
         <NativeBaseProvider>
          <ScrollView w="100%">
           <Text color="white">
-            This is history
+            This is Screen History
           </Text>
       </ScrollView>
       </NativeBaseProvider>

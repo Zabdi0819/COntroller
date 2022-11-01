@@ -9,7 +9,7 @@ import {  Text, NativeBaseProvider, ScrollView} from 'native-base';
         <NativeBaseProvider>
          <ScrollView w="100%">
           <Text color="white">
-            This is alerts
+            This is alerts Screen 
           </Text>
       </ScrollView>
       </NativeBaseProvider>

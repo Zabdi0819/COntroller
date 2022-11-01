@@ -17,7 +17,7 @@ import {GiGasStove} from "react-icons/gi";
         <NativeBaseProvider>
          <ScrollView w="100%">
           <Text color="white">
-            This is home
+            This is Screen Home
           </Text>
           <MdSensors size={"2xl"}/>
 

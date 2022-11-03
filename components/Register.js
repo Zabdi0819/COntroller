@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { ImageBackground, StyleSheet } from "react-native";
-import { Box,  Button,  ScrollView,  Stack,  Divider,  Text,  FormControl,  Input,  Image,  Center,
-  NativeBaseProvider, Fab,  Icon,  Heading,} from "native-base";
+import {
+  Box, Button, ScrollView, Stack, Divider, Text, FormControl, Input, Image, Center,
+  NativeBaseProvider, Fab, Icon, Heading,
+} from "native-base";
 import { Ionicons } from "@expo/vector-icons";
 import axios from "axios";
 
@@ -14,7 +16,7 @@ const Register = ({ navigation }) => {
     phone: "",
     email: "",
     password: "",
-    action:'insert'
+    action: 'insert'
   });
   const [errors, setErrors] = useState({});
   var pattern = new RegExp(
@@ -146,17 +148,24 @@ const Register = ({ navigation }) => {
                 alt="COntroller"
                 alignSelf="center"
               />
-              <Heading textAlign={"center"} color={"white"} size={"2xl"}>
+              <Heading size={"3xl"} textAlign="center" color={"white"} fontFamily={"Segoe UI Symbol"} paddingBottom={"1"}>
                 Sign up
               </Heading>
-              <Text fontSize="xl" italic color={"white"}>
+              <Text fontSize="xl" italic color={"white"} fontFamily={"Segoe UI Symbol"}>
                 Enter your data
               </Text>
               <FormControl isRequired isInvalid={"name" in errors}>
-                <FormControl.Label> Name </FormControl.Label>
+                <FormControl.Label>
+                  <Text color={"white"} fontWeight={"bold"} fontSize={"16pt"} fontFamily={"Segoe UI Symbol"}>
+                    Name
+                  </Text>
+                </FormControl.Label>
                 <Input
                   color={"white"}
                   p={2}
+                  borderColor={"#10CF92"}
+                  fontSize={"12pt"}
+                  placeholderTextColor={"#D6D6D6"}
                   placeholder="Name"
                   onChangeText={(value) =>
                     setFormData({ ...formData, name: value })
@@ -168,7 +177,9 @@ const Register = ({ navigation }) => {
                   </FormControl.ErrorMessage>
                 ) : (
                   <FormControl.HelperText>
-                    Name should contain at least 3 character.
+                    <Text color={"#D6D6D6"} fontSize={"10pt"} fontFamily={"Segoe UI Symbol"}>
+                      Name should contain at least 3 character.
+                    </Text>
                   </FormControl.HelperText>
                 )}
               </FormControl>
@@ -177,10 +188,18 @@ const Register = ({ navigation }) => {
             {/*--------------------LASTNAME-------------------*/}
             <Box>
               <FormControl isRequired isInvalid={"lastname" in errors}>
-                <FormControl.Label> Lastname </FormControl.Label>
+                <FormControl.Label>
+                  <Text color={"white"} fontWeight={"bold"} fontSize={"16pt"} fontFamily={"Segoe UI Symbol"}>
+                    Lastname
+                  </Text>
+                </FormControl.Label>
                 <Input
                   color={"white"}
                   p={2}
+                  borderColor={"#10CF92"}
+                  borderWidth={"1.5"}
+                  fontSize={"12pt"}
+                  placeholderTextColor={"#D6D6D6"}
                   placeholder="Lastname"
                   onChangeText={(value) =>
                     setFormData({ ...formData, lastname: value })
@@ -192,7 +211,9 @@ const Register = ({ navigation }) => {
                   </FormControl.ErrorMessage>
                 ) : (
                   <FormControl.HelperText>
-                    Name should contain at least 3 character.
+                    <Text color={"#D6D6D6"} fontSize={"10pt"} fontFamily={"Segoe UI Symbol"}>
+                      Name should contain at least 3 character.
+                    </Text>
                   </FormControl.HelperText>
                 )}
               </FormControl>
@@ -201,10 +222,18 @@ const Register = ({ navigation }) => {
             {/*--------------------PHONE-------------------*/}
             <Box>
               <FormControl isRequired isInvalid={"phone" in errors}>
-                <FormControl.Label> Phone </FormControl.Label>
+                <FormControl.Label>
+                  <Text color={"white"} fontWeight={"bold"} fontSize={"16pt"} fontFamily={"Segoe UI Symbol"}>
+                    Phone
+                  </Text>
+                </FormControl.Label>
                 <Input
                   color={"white"}
                   p={2}
+                  borderColor={"#10CF92"}
+                  borderWidth={"1.5"}
+                  fontSize={"12pt"}
+                  placeholderTextColor={"#D6D6D6"}
                   placeholder="Phone"
                   onChangeText={(value) =>
                     setFormData({ ...formData, phone: value })
@@ -216,7 +245,9 @@ const Register = ({ navigation }) => {
                   </FormControl.ErrorMessage>
                 ) : (
                   <FormControl.HelperText>
-                    We'll keep this between us
+                    <Text color={"#D6D6D6"} fontSize={"10pt"} fontFamily={"Segoe UI Symbol"}>
+                      Phone should contain at least 10 digits
+                    </Text>
                   </FormControl.HelperText>
                 )}
               </FormControl>
@@ -225,10 +256,18 @@ const Register = ({ navigation }) => {
             {/*--------------------EMAIL-------------------*/}
             <Box>
               <FormControl isRequired isInvalid={"email" in errors}>
-                <FormControl.Label> Email </FormControl.Label>
+                <FormControl.Label>
+                  <Text color={"white"} fontWeight={"bold"} fontSize={"16pt"} fontFamily={"Segoe UI Symbol"}>
+                    Email
+                  </Text>
+                </FormControl.Label>
                 <Input
                   color={"white"}
                   p={2}
+                  borderColor={"#10CF92"}
+                  borderWidth={"1.5"}
+                  fontSize={"12pt"}
+                  placeholderTextColor={"#D6D6D6"}
                   placeholder="Email"
                   onChangeText={(value) =>
                     setFormData({ ...formData, email: value })
@@ -240,7 +279,9 @@ const Register = ({ navigation }) => {
                   </FormControl.ErrorMessage>
                 ) : (
                   <FormControl.HelperText>
-                    The email must contain an at
+                    <Text color={"#D6D6D6"} fontSize={"10pt"} fontFamily={"Segoe UI Symbol"}>
+                      The email must contain an @
+                    </Text>
                   </FormControl.HelperText>
                 )}
               </FormControl>
@@ -249,11 +290,19 @@ const Register = ({ navigation }) => {
             {/*--------------------PASSWORD-------------------*/}
             <Box>
               <FormControl isRequired isInvalid={"password" in errors}>
-                <FormControl.Label> Password </FormControl.Label>
+                <FormControl.Label>
+                  <Text color={"white"} fontWeight={"bold"} fontSize={"16pt"} fontFamily={"Segoe UI Symbol"}>
+                    Password
+                  </Text>
+                </FormControl.Label>
                 <Input
                   color={"white"}
                   type="password"
                   p={2}
+                  borderColor={"#10CF92"}
+                  borderWidth={"1.5"}
+                  fontSize={"12pt"}
+                  placeholderTextColor={"#D6D6D6"}
                   placeholder="Password"
                   onChangeText={(value) =>
                     setFormData({ ...formData, password: value })
@@ -265,7 +314,9 @@ const Register = ({ navigation }) => {
                   </FormControl.ErrorMessage>
                 ) : (
                   <FormControl.HelperText>
-                    We'll keep this between us
+                    <Text color={"#D6D6D6"} fontSize={"10pt"} fontFamily={"Segoe UI Symbol"}>
+                      We'll keep this between us
+                    </Text>
                   </FormControl.HelperText>
                 )}
               </FormControl>
@@ -277,6 +328,8 @@ const Register = ({ navigation }) => {
                 marginTop="5"
                 borderRadius={"md"}
                 borderWidth={"2"}
+                fontSize={"12pt"}
+                placeholderTextColor={"#D6D6D6"}
                 borderColor="#50e8cc"
                 alignSelf="center"
                 width="50%"

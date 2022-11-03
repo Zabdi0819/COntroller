@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { ImageBackground, StyleSheet } from "react-native";
-import { Box, Button, ScrollView, Stack, Divider, Text, FormControl, Input, Image, Center, NativeBaseProvider,
-  Heading, } from "native-base";
+import {
+  Box, Button, ScrollView, Stack, Divider, Text, FormControl, Input, Image, Center, NativeBaseProvider,
+  Heading,
+} from "native-base";
 import axios from "axios";
 
 const Login = ({ navigation }) => {
-  const imageURI = require("../assets/favicon.png");
   const imageBG = require("../assets/Bg_login.jpg");
   const imageLogo = require("../assets/LogoCOntroller.png");
   const [formData, setFormData] = useState({
@@ -65,7 +66,7 @@ const Login = ({ navigation }) => {
 
     //npm install axios
     const response = await axios.post(
-      "http://localhost/Proyecto/index.php",
+      "http://localhost/Proyecto/login.php",
       formDataforRequest,
       {
         headers: {
@@ -81,8 +82,8 @@ const Login = ({ navigation }) => {
     console.log("Object", response.data);
 
     if (Object.keys(response.data).length >= 1) {
-      console.log("email", response.data[0].email);
-      navigation.navigate("Nav", { email: response.data[0].email });
+      console.log("name: ", response.data[0].name);
+      navigation.navigate("Nav", { name: response.data[0].name });
       console.log("navigation", "ok");
     } else {
       console.log("retry");
@@ -108,15 +109,22 @@ const Login = ({ navigation }) => {
                 alignSelf="center"
                 size={"2xl"}
               />
-              <Heading size={"3xl"} textAlign="center" color={"white"}>
+              <Heading size={"3xl"} textAlign="center" color={"white"} fontFamily={"Segoe UI Symbol"}>
                 Welcome!
               </Heading>
               <FormControl isRequired isInvalid={"email" in errors}>
-                <FormControl.Label> Email </FormControl.Label>
+                <FormControl.Label>
+                  <Text color={"white"} fontWeight={"bold"} fontSize={"16pt"} fontFamily={"Segoe UI Symbol"}>
+                    Email
+                  </Text>
+                </FormControl.Label>
                 <Input
                   p={2}
-                  placeholder="Email"
                   color={"white"}
+                  borderColor={"#10CF92"}
+                  fontSize={"12pt"}
+                  placeholderTextColor={"#D6D6D6"}
+                  placeholder="Email"
                   onChangeText={(value) =>
                     setFormData({ ...formData, email: value })
                   }
@@ -128,7 +136,9 @@ const Login = ({ navigation }) => {
                   </FormControl.ErrorMessage>
                 ) : (
                   <FormControl.HelperText>
-                    Name should contain at least 3 character.
+                    <Text color={"#D6D6D6"} fontSize={"10pt"} fontFamily={"Segoe UI Symbol"}>
+                      The email must contain an @
+                    </Text>
                   </FormControl.HelperText>
                 )}
               </FormControl>
@@ -136,12 +146,19 @@ const Login = ({ navigation }) => {
             </Box>
             <Box>
               <FormControl isRequired isInvalid={"password" in errors}>
-                <FormControl.Label> Password </FormControl.Label>
+                <FormControl.Label>
+                  <Text color={"white"} fontWeight={"bold"} fontSize={"16pt"} fontFamily={"Segoe UI Symbol"}>
+                    Password
+                  </Text>
+                </FormControl.Label>
                 <Input
                   type="password"
                   p={2}
                   color={"white"}
-                  placeholder="Password"
+                  borderColor={"#10CF92"}
+                  fontSize={"12pt"}
+                  placeholderTextColor={"#D6D6D6"}
+                  placeholder={"Password"}
                   onChangeText={(value) =>
                     setFormData({ ...formData, password: value })
                   }
@@ -153,7 +170,9 @@ const Login = ({ navigation }) => {
                   </FormControl.ErrorMessage>
                 ) : (
                   <FormControl.HelperText>
-                    We'll keep this between us
+                    <Text color={"#D6D6D6"} fontSize={"10pt"} fontFamily={"Segoe UI Symbol"}>
+                      We'll keep this between us
+                    </Text>
                   </FormControl.HelperText>
                 )}
               </FormControl>
@@ -161,17 +180,17 @@ const Login = ({ navigation }) => {
             </Box>
             <Box>
               <Button
-                backgroundColor="#16dda8"
+                backgroundColor="#10CF92"
                 marginTop="5"
                 borderRadius={"md"}
                 borderWidth={"2"}
                 borderColor="#50e8cc"
                 alignSelf="center"
-                size={"lg"}
-                width="80%"
+                width="60%"
+                height="60%"
                 onPress={() => onSumit()}
               >
-                <Text>Login </Text>
+                <Text style={styles.textBtn}>Sign in </Text>
               </Button>
             </Box>
             <Box>
@@ -181,10 +200,11 @@ const Login = ({ navigation }) => {
                 borderRadius={"md"}
                 borderColor="#50e8cc"
                 alignSelf="center"
-                width="80%"
+                width="60%"
+                height="60%"
                 onPress={onRegister}
               >
-                <Text color={"white"}>Sign up</Text>
+                <Text style={styles.textBtn}>Sign up</Text>
               </Button>
             </Box>
           </Stack>
@@ -198,6 +218,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
   },
+  textBtn: {
+    fontSize: "14pt",
+    color: "black",
+    textAlign: "center",
+    fontWeight: "bold"
+  }
 });
 
 export default Login;

@@ -1,15 +1,79 @@
 import React, { useState } from "react";
+import useUsers from "../hooks/useUsers";
 import { Text, View, Switch, NativeBaseProvider, ScrollView, Heading, Box } from 'native-base';
 import { ImageBackground, StyleSheet } from "react-native";
 import { MdSensors } from "react-icons/md";
 import { GiGasStove } from "react-icons/gi";
+import axios from "axios";
 
-const Home = (navigation) => {
+const Home = () => {
+  const email = useUsers();
   const imageBG = require("../assets/Bg_login.jpg");
   const [isEnabledM, setIsEnabledM] = useState(false);
   const [isEnabledCO, setIsEnabledCO] = useState(false);
-  const toggleSwitch1 = () => setIsEnabledM(previousState => !previousState);
-  const toggleSwitch2 = () => setIsEnabledCO(previousState => !previousState);
+  const [textM, setTextM] = useState('OFF')
+  const [textCO, setTextCO] = useState('OFF')
+
+
+  //Insert values on Motion Sensor Table
+  const toggleSwitch1 = async () => {
+    const formDataforRequest = new FormData()
+    console.log('Type', typeof (formDataforRequest))
+    formDataforRequest.append('email', email)
+    if(!isEnabledM){
+      setTextM('ON');
+      formDataforRequest.append('state', 'ON')
+      const response = await axios.post('http://localhost/Proyecto/motionSensor.php',
+        formDataforRequest,
+        {
+          headers: { 'Content-Type': 'multipart/form-data', 'Access-Control-Allow-Origin': '*' }
+        }
+      )
+      console.log('Object', response.data)
+
+    }else{
+      setTextM('OFF');
+      formDataforRequest.append('state', 'OFF')
+      const response = await axios.post('http://localhost/Proyecto/motionSensor.php',
+        formDataforRequest,
+        {
+          headers: { 'Content-Type': 'multipart/form-data', 'Access-Control-Allow-Origin': '*' }
+        }
+      )
+      console.log('Object', response.data)
+    }
+    setIsEnabledM(previousState => !previousState);
+  }
+
+  //Insert values on Gas Sensor Table
+  const toggleSwitch2 = async() => {
+    const formDataforRequest = new FormData()
+    console.log('Type', typeof (formDataforRequest))
+    formDataforRequest.append('email', email)
+    if(!isEnabledCO){
+      setTextCO('ON');
+      formDataforRequest.append('state', 'ON')
+      const response = await axios.post('http://localhost/Proyecto/gasSensor.php',
+        formDataforRequest,
+        {
+          headers: { 'Content-Type': 'multipart/form-data', 'Access-Control-Allow-Origin': '*' }
+        }
+      )
+      console.log('Object', response.data)
+
+    }else{
+      setTextCO('OFF');
+      formDataforRequest.append('state', 'OFF')
+      const response = await axios.post('http://localhost/Proyecto/gasSensor.php',
+        formDataforRequest,
+        {
+          headers: { 'Content-Type': 'multipart/form-data', 'Access-Control-Allow-Origin': '*' }
+        }
+      )
+      console.log('Object', response.data)
+    }
+    setIsEnabledCO(previousState => !previousState);
+  }
 
   return (
     <ImageBackground source={imageBG} resizeMode="cover" style={styles.image}>
@@ -20,7 +84,7 @@ const Home = (navigation) => {
           </Heading>
 
           <Box style={styles.box}>
-          <Text style={styles.textStatus}> Motion sensor: </Text>
+          <Text style={styles.textStatus}> Motion sensor: {textM}</Text>
             <View style={styles.OnOff} alignSelf="center">
               <MdSensors color={"black"} fontSize={"80px"}/>
               <Switch
@@ -35,7 +99,7 @@ const Home = (navigation) => {
           </Box>
 
           <Box style={styles.box}>
-            <Text style={styles.textStatus}>Gas sensor: </Text>
+            <Text style={styles.textStatus}>Gas sensor: {textCO}</Text>
             <View style={styles.OnOff} alignSelf="center">
               <GiGasStove color={"black"} fontSize={"80px"} />
               <Switch

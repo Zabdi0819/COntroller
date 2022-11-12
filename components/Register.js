@@ -156,7 +156,7 @@ const Register = ({ navigation }) => {
               </Text>
               <FormControl isRequired isInvalid={"name" in errors}>
                 <FormControl.Label>
-                  <Text color={"white"} fontWeight={"bold"} fontSize={"16pt"} fontFamily={"Segoe UI Symbol"}>
+                  <Text color={"white"} fontWeight={"bold"} fontSize={16} fontFamily={"Segoe UI Symbol"}>
                     Name
                   </Text>
                 </FormControl.Label>
@@ -164,7 +164,7 @@ const Register = ({ navigation }) => {
                   color={"white"}
                   p={2}
                   borderColor={"#10CF92"}
-                  fontSize={"12pt"}
+                  fontSize={12}
                   placeholderTextColor={"#D6D6D6"}
                   placeholder="Name"
                   onChangeText={(value) =>
@@ -177,7 +177,7 @@ const Register = ({ navigation }) => {
                   </FormControl.ErrorMessage>
                 ) : (
                   <FormControl.HelperText>
-                    <Text color={"#D6D6D6"} fontSize={"10pt"} fontFamily={"Segoe UI Symbol"}>
+                    <Text color={"#D6D6D6"} fontSize={10} fontFamily={"Segoe UI Symbol"}>
                       Name should contain at least 3 character.
                     </Text>
                   </FormControl.HelperText>
@@ -189,7 +189,7 @@ const Register = ({ navigation }) => {
             <Box>
               <FormControl isRequired isInvalid={"lastname" in errors}>
                 <FormControl.Label>
-                  <Text color={"white"} fontWeight={"bold"} fontSize={"16pt"} fontFamily={"Segoe UI Symbol"}>
+                  <Text color={"white"} fontWeight={"bold"} fontSize={16} fontFamily={"Segoe UI Symbol"}>
                     Lastname
                   </Text>
                 </FormControl.Label>
@@ -198,7 +198,7 @@ const Register = ({ navigation }) => {
                   p={2}
                   borderColor={"#10CF92"}
                   borderWidth={"1.5"}
-                  fontSize={"12pt"}
+                  fontSize={12}
                   placeholderTextColor={"#D6D6D6"}
                   placeholder="Lastname"
                   onChangeText={(value) =>
@@ -211,7 +211,7 @@ const Register = ({ navigation }) => {
                   </FormControl.ErrorMessage>
                 ) : (
                   <FormControl.HelperText>
-                    <Text color={"#D6D6D6"} fontSize={"10pt"} fontFamily={"Segoe UI Symbol"}>
+                    <Text color={"#D6D6D6"} fontSize={10} fontFamily={"Segoe UI Symbol"}>
                       Name should contain at least 3 character.
                     </Text>
                   </FormControl.HelperText>
@@ -223,7 +223,7 @@ const Register = ({ navigation }) => {
             <Box>
               <FormControl isRequired isInvalid={"phone" in errors}>
                 <FormControl.Label>
-                  <Text color={"white"} fontWeight={"bold"} fontSize={"16pt"} fontFamily={"Segoe UI Symbol"}>
+                  <Text color={"white"} fontWeight={"bold"} fontSize={16} fontFamily={"Segoe UI Symbol"}>
                     Phone
                   </Text>
                 </FormControl.Label>
@@ -232,7 +232,7 @@ const Register = ({ navigation }) => {
                   p={2}
                   borderColor={"#10CF92"}
                   borderWidth={"1.5"}
-                  fontSize={"12pt"}
+                  fontSize={12}
                   placeholderTextColor={"#D6D6D6"}
                   placeholder="Phone"
                   onChangeText={(value) =>
@@ -245,7 +245,7 @@ const Register = ({ navigation }) => {
                   </FormControl.ErrorMessage>
                 ) : (
                   <FormControl.HelperText>
-                    <Text color={"#D6D6D6"} fontSize={"10pt"} fontFamily={"Segoe UI Symbol"}>
+                    <Text color={"#D6D6D6"} fontSize={10} fontFamily={"Segoe UI Symbol"}>
                       Phone should contain at least 10 digits
                     </Text>
                   </FormControl.HelperText>
@@ -257,7 +257,7 @@ const Register = ({ navigation }) => {
             <Box>
               <FormControl isRequired isInvalid={"email" in errors}>
                 <FormControl.Label>
-                  <Text color={"white"} fontWeight={"bold"} fontSize={"16pt"} fontFamily={"Segoe UI Symbol"}>
+                  <Text color={"white"} fontWeight={"bold"} fontSize={16} fontFamily={"Segoe UI Symbol"}>
                     Email
                   </Text>
                 </FormControl.Label>
@@ -266,7 +266,7 @@ const Register = ({ navigation }) => {
                   p={2}
                   borderColor={"#10CF92"}
                   borderWidth={"1.5"}
-                  fontSize={"12pt"}
+                  fontSize={12}
                   placeholderTextColor={"#D6D6D6"}
                   placeholder="Email"
                   onChangeText={(value) =>
@@ -279,7 +279,7 @@ const Register = ({ navigation }) => {
                   </FormControl.ErrorMessage>
                 ) : (
                   <FormControl.HelperText>
-                    <Text color={"#D6D6D6"} fontSize={"10pt"} fontFamily={"Segoe UI Symbol"}>
+                    <Text color={"#D6D6D6"} fontSize={10} fontFamily={"Segoe UI Symbol"}>
                       The email must contain an @
                     </Text>
                   </FormControl.HelperText>
@@ -291,7 +291,7 @@ const Register = ({ navigation }) => {
             <Box>
               <FormControl isRequired isInvalid={"password" in errors}>
                 <FormControl.Label>
-                  <Text color={"white"} fontWeight={"bold"} fontSize={"16pt"} fontFamily={"Segoe UI Symbol"}>
+                  <Text color={"white"} fontWeight={"bold"} fontSize={16} fontFamily={"Segoe UI Symbol"}>
                     Password
                   </Text>
                 </FormControl.Label>
@@ -301,7 +301,7 @@ const Register = ({ navigation }) => {
                   p={2}
                   borderColor={"#10CF92"}
                   borderWidth={"1.5"}
-                  fontSize={"12pt"}
+                  fontSize={12}
                   placeholderTextColor={"#D6D6D6"}
                   placeholder="Password"
                   onChangeText={(value) =>

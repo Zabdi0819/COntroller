@@ -48,6 +48,7 @@ const Login = ({ navigation }) => {
   const onRegister = () => {
     navigation.navigate("Sign up");
   };
+
   const onSumit = async () => {
     validate()
       ? console.log("Submitted", formData)
@@ -67,7 +68,7 @@ const Login = ({ navigation }) => {
 
     //npm install axios
     const response = await axios.post(
-      "http://localhost/Proyecto/login.php",
+      "http://192.168.0.19/Proyecto/login.php",
       formDataforRequest,
       {
         headers: {
@@ -110,12 +111,12 @@ const Login = ({ navigation }) => {
                 alignSelf="center"
                 size={"2xl"}
               />
-              <Heading size={"3xl"} textAlign="center" color={"white"} fontFamily={"Segoe UI Symbol"}>
+              <Heading size={"3xl"} textAlign="center" color={"white"}>
                 Welcome!
               </Heading>
               <FormControl isRequired isInvalid={"email" in errors}>
                 <FormControl.Label>
-                  <Text color={"white"} fontWeight={"bold"} fontSize={"16pt"} fontFamily={"Segoe UI Symbol"}>
+                  <Text color={"white"} fontWeight={"bold"} fontSize={16}>
                     Email
                   </Text>
                 </FormControl.Label>
@@ -123,7 +124,7 @@ const Login = ({ navigation }) => {
                   p={2}
                   color={"white"}
                   borderColor={"#10CF92"}
-                  fontSize={"12pt"}
+                  fontSize={12}
                   placeholderTextColor={"#D6D6D6"}
                   placeholder="Email"
                   onChangeText={(value) =>
@@ -137,7 +138,7 @@ const Login = ({ navigation }) => {
                   </FormControl.ErrorMessage>
                 ) : (
                   <FormControl.HelperText>
-                    <Text color={"#D6D6D6"} fontSize={"10pt"} fontFamily={"Segoe UI Symbol"}>
+                    <Text color={"#D6D6D6"} fontSize={10}>
                       The email must contain an @
                     </Text>
                   </FormControl.HelperText>
@@ -148,7 +149,7 @@ const Login = ({ navigation }) => {
             <Box>
               <FormControl isRequired isInvalid={"password" in errors}>
                 <FormControl.Label>
-                  <Text color={"white"} fontWeight={"bold"} fontSize={"16pt"} fontFamily={"Segoe UI Symbol"}>
+                  <Text color={"white"} fontWeight={"bold"} fontSize={16}>
                     Password
                   </Text>
                 </FormControl.Label>
@@ -157,7 +158,7 @@ const Login = ({ navigation }) => {
                   p={2}
                   color={"white"}
                   borderColor={"#10CF92"}
-                  fontSize={"12pt"}
+                  fontSize={12}
                   placeholderTextColor={"#D6D6D6"}
                   placeholder={"Password"}
                   onChangeText={(value) =>
@@ -171,7 +172,7 @@ const Login = ({ navigation }) => {
                   </FormControl.ErrorMessage>
                 ) : (
                   <FormControl.HelperText>
-                    <Text color={"#D6D6D6"} fontSize={"10pt"} fontFamily={"Segoe UI Symbol"}>
+                    <Text color={"#D6D6D6"} fontSize={10}>
                       We'll keep this between us
                     </Text>
                   </FormControl.HelperText>
@@ -188,8 +189,8 @@ const Login = ({ navigation }) => {
                 borderWidth={"2"}
                 borderColor="#50e8cc"
                 alignSelf="center"
-                width="60%"
-                height="60%"
+                width= "200"
+                height= "50"
                 onPress={() => onSumit()}
               >
                 <Text style={styles.textBtn}>Sign in </Text>
@@ -198,13 +199,13 @@ const Login = ({ navigation }) => {
             <Box>
               <Button
                 style={{ shadowColor: "black", shadowRadius: 10 }}
-                backgroundColor="#0AE09E"
+                backgroundColor="primary.50"
                 marginTop="5"
                 borderRadius={"md"}
                 borderColor="#50e8cc"
                 alignSelf="center"
-                width="60%"
-                height="60%"
+                width= "200"
+                height= "50"
                 onPress={onRegister}
               >
                 <Text style={styles.textBtn}>Sign up</Text>
@@ -223,10 +224,9 @@ const styles = StyleSheet.create({
   },
   textBtn: {
     fontSize: 22,
-    color: "black",
+    color: "#123412",
     textAlign: "center",
-    fontWeight: "bold",
-    fontFamily: "Segoe UI Symbol"
+    fontWeight: "bold"
   }
 });
 

@@ -1,19 +1,21 @@
 import React, { useState } from "react";
 import useUsers from "../hooks/useUsers";
-import { Text, View, Switch, NativeBaseProvider, ScrollView, Heading, Box } from 'native-base';
-import { ImageBackground, StyleSheet } from "react-native";
+import { Text, Switch, NativeBaseProvider, ScrollView, Heading, Box, Button } from 'native-base';
+import { ImageBackground, StyleSheet, View } from "react-native";
 import { MdSensors } from "react-icons/md";
 import { GiGasStove } from "react-icons/gi";
 import axios from "axios";
+import {useNavigation} from "@react-navigation/native"
 
 const Home = () => {
+  const navigation = useNavigation();
   const email = useUsers();
   const imageBG = require("../assets/Bg_login.jpg");
   const [isEnabledM, setIsEnabledM] = useState(false);
   const [isEnabledCO, setIsEnabledCO] = useState(false);
   const [textM, setTextM] = useState('OFF')
   const [textCO, setTextCO] = useState('OFF')
-  
+
 
 
   //Insert values on Motion Sensor Table
@@ -21,7 +23,7 @@ const Home = () => {
     const formDataforRequest = new FormData()
     console.log('Type', typeof (formDataforRequest))
     formDataforRequest.append('email', email)
-    if(!isEnabledM){
+    if (!isEnabledM) {
       setTextM('ON');
       formDataforRequest.append('state', 'ON')
       const response = await axios.post('http://localhost/Proyecto/motionSensor.php',
@@ -32,7 +34,7 @@ const Home = () => {
       )
       console.log('Object', response.data)
 
-    }else{
+    } else {
       setTextM('OFF');
       formDataforRequest.append('state', 'OFF')
       const response = await axios.post('http://localhost/Proyecto/motionSensor.php',
@@ -47,11 +49,11 @@ const Home = () => {
   }
 
   //Insert values on Gas Sensor Table
-  const toggleSwitch2 = async() => {
+  const toggleSwitch2 = async () => {
     const formDataforRequest = new FormData()
     console.log('Type', typeof (formDataforRequest))
     formDataforRequest.append('email', email)
-    if(!isEnabledCO){
+    if (!isEnabledCO) {
       setTextCO('ON');
       formDataforRequest.append('state', 'ON')
       const response = await axios.post('http://localhost/Proyecto/gasSensor.php',
@@ -60,9 +62,8 @@ const Home = () => {
           headers: { 'Content-Type': 'multipart/form-data', 'Access-Control-Allow-Origin': '*' }
         }
       )
-      console.log('Object', response.data)
 
-    }else{
+    } else {
       setTextCO('OFF');
       formDataforRequest.append('state', 'OFF')
       const response = await axios.post('http://localhost/Proyecto/gasSensor.php',
@@ -71,7 +72,6 @@ const Home = () => {
           headers: { 'Content-Type': 'multipart/form-data', 'Access-Control-Allow-Origin': '*' }
         }
       )
-      console.log('Object', response.data)
     }
     setIsEnabledCO(previousState => !previousState);
   }
@@ -85,14 +85,13 @@ const Home = () => {
           </Heading>
 
           <Box style={styles.box}>
-          <Text style={styles.textStatus}> Motion sensor: {textM}</Text>
+            <Text style={styles.textStatus}> Motion sensor: {textM}</Text>
             <View style={styles.OnOff} alignSelf="center">
-              <MdSensors color={"black"} fontSize={"80px"}/>
+              <MdSensors color={"black"} fontSize={"80px"} />
               <Switch
-                alignSelf="auto"
-                trackColor={{ false: "#5F4E48", true: "#00571E" }}
-                thumbColor={isEnabledM ? "#f5dd4b" : "#f4f3f4"}
-                ios_backgroundColor="#3e3e3e"
+                size={"lg"}
+                trackColor={{ false:"white", true: "#1F1E38" }}
+                thumbColor={isEnabledM ? "white": "black"}
                 onValueChange={toggleSwitch1}
                 value={isEnabledM}
               />
@@ -104,13 +103,26 @@ const Home = () => {
             <View style={styles.OnOff} alignSelf="center">
               <GiGasStove color={"black"} fontSize={"80px"} />
               <Switch
-                trackColor={{ false: "#5F4E48", true: "#00571E" }}
-                thumbColor={isEnabledCO ? "#f5dd4b" : "#f4f3f4"}
-                ios_backgroundColor="#3e3e3e"
+                size={"lg"}
+                trackColor={{ false: "white", true: "#1F1E38" }}
+                thumbColor={isEnabledCO ? "white": "black"}
                 onValueChange={toggleSwitch2}
                 value={isEnabledCO}
               />
             </View>
+            <Button
+              style={{ shadowColor: "black", shadowRadius: 10 }}
+              backgroundColor="#061430"
+              marginY={"5"}
+              borderRadius={"md"}
+              borderColor="#50e8cc"
+              alignSelf="center"
+              width={"40"}
+              height={"10"}
+              onPress={()=> navigation.navigate("GasLevels")}
+            >
+              <Text style={styles.text}>Gas levels</Text>
+            </Button>
           </Box>
         </ScrollView>
       </NativeBaseProvider>
@@ -129,17 +141,26 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   box: {
-    backgroundColor: "#0AE09E", 
+    backgroundColor: "#07A875",
     width: "80%",
     alignSelf: "center",
     marginTop: 20,
-    borderRadius: 10,
-    borderColor: "red"
+    borderRadius: 5,
+    borderColor: "black",
+    borderWidth: 2,
+    shadowColor: "black",
+    shadowRadius: 5
   },
   textStatus: {
     color: "black",
     textAlign: "center",
-    fontSize: "18pt"
+    fontSize: 18
+  },
+  text: {
+    color: "white",
+    fontSize: 22,
+    fontFamily: "Segoe UI Symbol",
+    fontWeight: "bold",
   },
   OnOff: {
     flex: 1,

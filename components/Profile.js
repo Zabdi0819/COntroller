@@ -230,7 +230,7 @@ const Profile = ({ navigation }) => {
                   p={2}
                   borderColor={"#10CF92"}
                   borderWidth={"1.5"}
-                  fontSize={"12pt"}
+                  fontSize={12}
                   placeholderTextColor={"#D6D6D6"}
                   placeholder="Lastname"
                   defaultValue={formData.lastname}
@@ -256,7 +256,7 @@ const Profile = ({ navigation }) => {
             <Box>
               <FormControl isRequired isInvalid={"phone" in errors}>
                 <FormControl.Label>
-                  <Text color={"white"} fontWeight={"bold"} fontSize={"16pt"} fontFamily={"Segoe UI Symbol"}>
+                  <Text color={"white"} fontWeight={"bold"} fontSize={16} fontFamily={"Segoe UI Symbol"}>
                     Phone
                   </Text>
                 </FormControl.Label>
@@ -265,7 +265,7 @@ const Profile = ({ navigation }) => {
                   p={2}
                   borderColor={"#10CF92"}
                   borderWidth={"1.5"}
-                  fontSize={"12pt"}
+                  fontSize={12}
                   placeholderTextColor={"#D6D6D6"}
                   placeholder="Phone"
                   defaultValue={formData.phone}
@@ -291,7 +291,7 @@ const Profile = ({ navigation }) => {
             <Box>
               <FormControl isRequired isInvalid={"email" in errors}>
                 <FormControl.Label>
-                  <Text color={"white"} fontWeight={"bold"} fontSize={"16pt"} fontFamily={"Segoe UI Symbol"}>
+                  <Text color={"white"} fontWeight={"bold"} fontSize={16} fontFamily={"Segoe UI Symbol"}>
                     Email
                   </Text>
                 </FormControl.Label>
@@ -300,7 +300,7 @@ const Profile = ({ navigation }) => {
                   p={2}
                   borderColor={"#10CF92"}
                   borderWidth={"1.5"}
-                  fontSize={"12pt"}
+                  fontSize={12}
                   placeholderTextColor={"#D6D6D6"}
                   placeholder="Email"
                   defaultValue={formData.email}
@@ -314,7 +314,7 @@ const Profile = ({ navigation }) => {
                   </FormControl.ErrorMessage>
                 ) : (
                   <FormControl.HelperText>
-                    <Text color={"#D6D6D6"} fontSize={"10pt"} fontFamily={"Segoe UI Symbol"}>
+                    <Text color={"#D6D6D6"} fontSize={10} fontFamily={"Segoe UI Symbol"}>
                       The email must contain an @
                     </Text>
                   </FormControl.HelperText>
@@ -326,7 +326,7 @@ const Profile = ({ navigation }) => {
             <Box>
               <FormControl isRequired isInvalid={"password" in errors}>
                 <FormControl.Label>
-                  <Text color={"white"} fontWeight={"bold"} fontSize={"16pt"} fontFamily={"Segoe UI Symbol"}>
+                  <Text color={"white"} fontWeight={"bold"} fontSize={16} fontFamily={"Segoe UI Symbol"}>
                     Password
                   </Text>
                 </FormControl.Label>
@@ -336,7 +336,7 @@ const Profile = ({ navigation }) => {
                   p={2}
                   borderColor={"#10CF92"}
                   borderWidth={"1.5"}
-                  fontSize={"12pt"}
+                  fontSize={10}
                   placeholderTextColor={"#D6D6D6"}
                   placeholder="Password"
                   defaultValue={formData.password}
@@ -350,7 +350,7 @@ const Profile = ({ navigation }) => {
                   </FormControl.ErrorMessage>
                 ) : (
                   <FormControl.HelperText>
-                    <Text color={"#D6D6D6"} fontSize={"10pt"} fontFamily={"Segoe UI Symbol"}>
+                    <Text color={"#D6D6D6"} fontSize={10} fontFamily={"Segoe UI Symbol"}>
                       We'll keep this between us
                     </Text>
                   </FormControl.HelperText>

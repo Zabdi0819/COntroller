@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Icon from "react-native-vector-icons/Ionicons";
 import Home from "./Home.js";
 import History from "./History.js";
 import Profile from "./Profile.js";
@@ -13,16 +14,30 @@ function Nav({ route }) {
   return (
     <UserContext.Provider value={email}>
       <Tab.Navigator
-        screenOptions={{
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({focused}) => {
+            let iconName = ''
+            switch (route.name) {
+              case 'Home':
+                iconName = 'home';
+                break;
+              case 'History':
+                iconName = 'alarm';
+                break;
+              case 'Profile':
+                iconName = 'person'
+            }
+            return <Icon name={iconName} size={25} color={focused ? "black" : "white"} />
+          }, 
           headerStyle: { backgroundColor: "#110542", shadowColor: "#0AE09E", shadowRadius: 5 },
           headerTintColor: "white",
-          headerTitleStyle: { fontWeight: "bold", fontSize: "20pt" },
+          headerTitleStyle: { fontWeight: "bold", fontSize: 12 },
           tabBarActiveTintColor: "#000",
           tabBarInactiveTintColor: "#FFF",
           tabBarActiveBackgroundColor: "#0AE09E",
           tabBarInactiveBackgroundColor: "#110542",
           tabBarItemStyle: { borderColor: "white" },
-          tabBarLabelStyle: { fontSize: "12pt" },
+          tabBarLabelStyle: { fontSize: 12 },
           tabBarStyle: [
             {
               borderTopWidth: 1,
@@ -32,7 +47,7 @@ function Nav({ route }) {
               display: "flex"
             },
             null]
-        }}>
+        })}>
         <Tab.Screen name="Home" component={Home}
           options={{
             tabBarItemStyle: { borderRightWidth: 2, borderRightColor: "white" }

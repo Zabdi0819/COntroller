@@ -324,18 +324,18 @@ const Register = ({ navigation }) => {
             </Box>
             <Box>
               <Button
-                backgroundColor="#16dda8"
+                style={{ shadowColor: "black", shadowRadius: 10 }}
+                backgroundColor="#0AE09E"
                 marginTop="5"
                 borderRadius={"md"}
                 borderWidth={"2"}
-                fontSize={"12pt"}
-                placeholderTextColor={"#D6D6D6"}
                 borderColor="#50e8cc"
                 alignSelf="center"
-                width="50%"
+                width="60%"
+                height="60%"
                 onPress={onSumit}
               >
-                <Text fontSize="xl">Register </Text>
+                <Text style={styles.textBtn}>Register </Text>
               </Button>
             </Box>
           </Stack>
@@ -372,23 +372,17 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
   },
-  text: {
-    color: "white",
-    fontSize: 25,
-    fontFamily: "Segoe UI",
-    lineHeight: 84,
+  textBtn: {
+    fontSize: 22,
+    color: "black",
+    textAlign: "center",
     fontWeight: "bold",
+    fontFamily: "Segoe UI Symbol"
   },
   logo: {
     height: "120px",
     width: "120px",
-  },
-  button: {
-    fontFamily: "Segoe UI",
-    fontSize: 20,
-    textAlign: "center",
-    fontWeight: "bold",
-  },
+  }
 });
 
 export default Register;

@@ -13,6 +13,7 @@ const Home = () => {
   const [isEnabledCO, setIsEnabledCO] = useState(false);
   const [textM, setTextM] = useState('OFF')
   const [textCO, setTextCO] = useState('OFF')
+  
 
 
   //Insert values on Motion Sensor Table

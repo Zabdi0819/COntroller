@@ -18,6 +18,7 @@ const Login = ({ navigation }) => {
   var pattern = new RegExp(
     "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[-+_!@#$%^&*.,?]).+$"
   );
+
   const validate = () => {
     //EMAIL validation------------------------------------------------
     if (formData.email === undefined) {
@@ -180,7 +181,8 @@ const Login = ({ navigation }) => {
             </Box>
             <Box>
               <Button
-                backgroundColor="#10CF92"
+                style={{ shadowColor: "black", shadowRadius: 10 }}
+                backgroundColor="#0AE09E"
                 marginTop="5"
                 borderRadius={"md"}
                 borderWidth={"2"}
@@ -195,7 +197,8 @@ const Login = ({ navigation }) => {
             </Box>
             <Box>
               <Button
-                backgroundColor="#05a27b"
+                style={{ shadowColor: "black", shadowRadius: 10 }}
+                backgroundColor="#0AE09E"
                 marginTop="5"
                 borderRadius={"md"}
                 borderColor="#50e8cc"
@@ -219,10 +222,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   textBtn: {
-    fontSize: "14pt",
+    fontSize: 22,
     color: "black",
     textAlign: "center",
-    fontWeight: "bold"
+    fontWeight: "bold",
+    fontFamily: "Segoe UI Symbol"
   }
 });
 

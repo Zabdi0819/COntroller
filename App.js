@@ -15,16 +15,6 @@ const Tab = createBottomTabNavigator();
 
 const StackNav = createNativeStackNavigator();
 
-function HomeTabs() {
-  return (
-    <Tab.Navigator>
-      <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="History" component={History} />
-      <Tab.Screen name="Profile" component={Profile} />
-    </Tab.Navigator>
-  );
-}
-
 export default function App(){
   return(
     <NativeBaseProvider>

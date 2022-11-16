@@ -26,7 +26,7 @@ const Profile = ({ navigation }) => {
   const getUser = async () => {
     const formDataforRequest = new FormData()
     formDataforRequest.append('email', email)
-    const response = await axios.get("http://localhost/Proyecto/index.php?email=" + email)
+    const response = await axios.get("http://192.168.100.241/Proyecto/index.php?email=" + email)
     console.log(response.data)
     setFormData({
       name: response.data[0]["name"],
@@ -109,7 +109,7 @@ const Profile = ({ navigation }) => {
 
       //npm install axios
       const response = await axios.post(
-        "http://localhost/Proyecto/profile.php",
+        "http://192.168.100.241/Proyecto/profile.php",
         formDataforRequest,
         {
           headers: {
@@ -152,7 +152,7 @@ const Profile = ({ navigation }) => {
 
     //npm install axios
     const response = await axios.post(
-      "http://localhost/Proyecto/profile.php",
+      "http://192.168.100.241/Proyecto/profile.php",
       formDataforRequest,
       {
         headers: {
@@ -187,7 +187,7 @@ const Profile = ({ navigation }) => {
             <Box>
               <FormControl isRequired isInvalid={"name" in errors}>
                 <FormControl.Label>
-                  <Text color={"white"} fontWeight={"bold"} fontSize={"16pt"} fontFamily={"Segoe UI Symbol"}>
+                  <Text color={"white"} fontWeight={"bold"} fontSize={16}>
                     Name
                   </Text>
                 </FormControl.Label>
@@ -195,7 +195,7 @@ const Profile = ({ navigation }) => {
                   color={"white"}
                   p={2}
                   borderColor={"#10CF92"}
-                  fontSize={"12pt"}
+                  fontSize={12}
                   placeholderTextColor={"#D6D6D6"}
                   placeholder="Name"
                   defaultValue={formData.name}
@@ -209,7 +209,7 @@ const Profile = ({ navigation }) => {
                   </FormControl.ErrorMessage>
                 ) : (
                   <FormControl.HelperText>
-                    <Text color={"#D6D6D6"} fontSize={"10pt"} fontFamily={"Segoe UI Symbol"}>
+                    <Text color={"#D6D6D6"} fontSize={10}>
                       Name should contain at least 3 character.
                     </Text>
                   </FormControl.HelperText>
@@ -221,7 +221,7 @@ const Profile = ({ navigation }) => {
             <Box>
               <FormControl isRequired isInvalid={"lastname" in errors}>
                 <FormControl.Label>
-                  <Text color={"white"} fontWeight={"bold"} fontSize={"16pt"} fontFamily={"Segoe UI Symbol"}>
+                  <Text color={"white"} fontWeight={"bold"} fontSize={16}>
                     Lastname
                   </Text>
                 </FormControl.Label>
@@ -244,7 +244,7 @@ const Profile = ({ navigation }) => {
                   </FormControl.ErrorMessage>
                 ) : (
                   <FormControl.HelperText>
-                    <Text color={"#D6D6D6"} fontSize={"10pt"} fontFamily={"Segoe UI Symbol"}>
+                    <Text color={"#D6D6D6"} fontSize={10}>
                       Name should contain at least 3 character.
                     </Text>
                   </FormControl.HelperText>
@@ -256,7 +256,7 @@ const Profile = ({ navigation }) => {
             <Box>
               <FormControl isRequired isInvalid={"phone" in errors}>
                 <FormControl.Label>
-                  <Text color={"white"} fontWeight={"bold"} fontSize={16} fontFamily={"Segoe UI Symbol"}>
+                  <Text color={"white"} fontWeight={"bold"} fontSize={16}>
                     Phone
                   </Text>
                 </FormControl.Label>
@@ -279,7 +279,7 @@ const Profile = ({ navigation }) => {
                   </FormControl.ErrorMessage>
                 ) : (
                   <FormControl.HelperText>
-                    <Text color={"#D6D6D6"} fontSize={"10pt"} fontFamily={"Segoe UI Symbol"}>
+                    <Text color={"#D6D6D6"} fontSize={10}>
                       Phone should contain at least 10 digits
                     </Text>
                   </FormControl.HelperText>
@@ -291,7 +291,7 @@ const Profile = ({ navigation }) => {
             <Box>
               <FormControl isRequired isInvalid={"email" in errors}>
                 <FormControl.Label>
-                  <Text color={"white"} fontWeight={"bold"} fontSize={16} fontFamily={"Segoe UI Symbol"}>
+                  <Text color={"white"} fontWeight={"bold"} fontSize={16}>
                     Email
                   </Text>
                 </FormControl.Label>
@@ -314,7 +314,7 @@ const Profile = ({ navigation }) => {
                   </FormControl.ErrorMessage>
                 ) : (
                   <FormControl.HelperText>
-                    <Text color={"#D6D6D6"} fontSize={10} fontFamily={"Segoe UI Symbol"}>
+                    <Text color={"#D6D6D6"} fontSize={10}>
                       The email must contain an @
                     </Text>
                   </FormControl.HelperText>
@@ -326,7 +326,7 @@ const Profile = ({ navigation }) => {
             <Box>
               <FormControl isRequired isInvalid={"password" in errors}>
                 <FormControl.Label>
-                  <Text color={"white"} fontWeight={"bold"} fontSize={16} fontFamily={"Segoe UI Symbol"}>
+                  <Text color={"white"} fontWeight={"bold"} fontSize={16}>
                     Password
                   </Text>
                 </FormControl.Label>
@@ -350,7 +350,7 @@ const Profile = ({ navigation }) => {
                   </FormControl.ErrorMessage>
                 ) : (
                   <FormControl.HelperText>
-                    <Text color={"#D6D6D6"} fontSize={10} fontFamily={"Segoe UI Symbol"}>
+                    <Text color={"#D6D6D6"} fontSize={10}>
                       We'll keep this between us
                     </Text>
                   </FormControl.HelperText>
@@ -366,8 +366,8 @@ const Profile = ({ navigation }) => {
                 borderRadius={"md"}
                 borderColor="#50e8cc"
                 alignSelf="center"
-                width="60%"
-                height="60%"
+                width= "200"
+                height= "50"
                 onPress={onUpdate}
               >
                 <Text style={styles.text}>Update data</Text>
@@ -381,8 +381,8 @@ const Profile = ({ navigation }) => {
                 borderRadius={"md"}
                 borderColor="#50e8cc"
                 alignSelf="center"
-                width="60%"
-                height="60%"
+                width= "200"
+                height= "50"
                 onPress={logOut}
               >
                 <Text style={styles.text}>Log out</Text>
@@ -397,8 +397,8 @@ const Profile = ({ navigation }) => {
                 borderWidth={"4"}
                 borderColor={"#4F0C0C"}
                 alignSelf="center"
-                width="60%"
-                height="60%"
+                width= "200"
+                height= "50"
                 onPress={deleteAccount}
               >
                 <Text style={styles.text}>Delete account</Text>
@@ -423,7 +423,6 @@ const styles = StyleSheet.create({
   text: {
     color: "black",
     fontSize: 22,
-    fontFamily: "Segoe UI Symbol",
     fontWeight: "bold",
   },
   logo: {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ImageBackground, StyleSheet } from "react-native";
-import { Text, View, NativeBaseProvider, ScrollView, Box, FlatList, Button } from 'native-base';
+import { Text, View, NativeBaseProvider, ScrollView, Box, FlatList, Button, Stack } from 'native-base';
 import axios from "axios";
 
 //MOTION SENSOR ITEMS -------------------------------------------------------------------
@@ -11,13 +11,13 @@ const ItemMS = (props) => (
         {props.pir_id}
       </Text>
       <Text style={{ textTransform: 'uppercase', color: 'white' }} >
-        <b>State: </b>{" " + props.state}
+        <Text fontWeight={"bold"}>State: </Text>{" " + props.state}
       </Text>
       <Text style={{ textTransform: 'uppercase', color: 'white' }} >
-        <b>Date Time: </b>{" " + props.date_time}
+        <Text fontWeight={"bold"}>Date Time: </Text>{" " + props.date_time}
       </Text>
       <Text style={{ textTransform: 'uppercase', color: 'white' }} >
-        <b>User: </b>{" " + props.name + " " + props.last_name}
+        <Text fontWeight={"bold"}>User: </Text>{" " + props.name + " " + props.last_name}
       </Text>
 
     </View>
@@ -33,13 +33,13 @@ const ItemGS = (props) => (
         {props.mq_id}
       </Text>
       <Text style={{ textTransform: 'uppercase', color: 'white' }} >
-        <b>State: </b>{" " + props.state}
+        <Text fontWeight={"bold"}>State: </Text>{" " + props.state}
       </Text>
       <Text style={{ textTransform: 'uppercase', color: 'white' }} >
-        <b>Date Time: </b>{" " + props.date_time}
+        <Text fontWeight={"bold"}>Date Time: </Text>{" " + props.date_time}
       </Text>
       <Text style={{ textTransform: 'uppercase', color: 'white' }} >
-        <b>User: </b>{" " + props.name + " " + props.last_name}
+        <Text fontWeight={"bold"}>User: </Text>{" " + props.name + " " + props.last_name}
       </Text>
 
     </View>
@@ -56,7 +56,7 @@ const History = () => {
   //Get data
   //MOTION SENSOR -----------------------------------------------------------------------------------
   const getMSHistory = async () => {
-    const response = await axios.get('http://localhost/Proyecto/motionSensor.php')
+    const response = await axios.get('http://192.168.100.241/Proyecto/motionSensor.php')
     setMSList(response.data)
     console.log(response.data)
     console.log('typeof', typeof (response.data))
@@ -74,7 +74,7 @@ const History = () => {
 
   //GAS SENSOR -------------------------------------------------------------------------------------
   const getGSHistory = async () => {
-    const response = await axios.get('http://localhost/Proyecto/gasSensor.php')
+    const response = await axios.get('http://192.168.100.241/Proyecto/gasSensor.php')
     setGasList(response.data)
     console.log(response.data)
     console.log('typeof', typeof (response.data))
@@ -103,48 +103,46 @@ const History = () => {
   return (
     <ImageBackground source={imageBG} resizeMode="cover" style={styles.image}>
       <NativeBaseProvider>
-        <ScrollView w="100%">
-          <Box>
-            <Button
-              style={{ shadowColor: "black", shadowRadius: 10 }}
-              backgroundColor="#0AE09E"
-              marginTop="5"
-              borderRadius={"md"}
-              borderColor="#50e8cc"
-              alignSelf="center"
-              width={"40"}
-              height={"10"}
-              onPress={refresh}
-            >
-              <Text style={styles.text}>Refresh</Text>
-            </Button>
-          </Box>
+            <Box>
+              <Button
+                style={{ shadowColor: "black", shadowRadius: 10 }}
+                backgroundColor="#0AE09E"
+                marginTop="5"
+                borderRadius={"md"}
+                borderColor="#50e8cc"
+                alignSelf="center"
+                width={"40"}
+                height={"10"}
+                onPress={refresh}
+              >
+                <Text style={styles.text}>Refresh</Text>
+              </Button>
+            </Box>
 
-          <Box style={styles.box}>
-            <Text style={styles.textBoxes}>
-              Motion sensor:
-            </Text>
-            <FlatList
-              style={styles.flatList}
-              data={msList}
-              renderItem={renderItemMS}
-              keyExtractor={item => item.pir_id}
-            />
-          </Box>
+            <Box style={styles.box}>
+              <Text style={styles.textBoxes}>
+                Motion sensor:
+              </Text>
+              <FlatList
+                style={styles.flatList}
+                data={msList}
+                renderItem={renderItemMS}
+                keyExtractor={item => item.pir_id}
+              />
+            </Box>
 
-          <Box style={styles.box}>
-            <Text style={styles.textBoxes}>
-              Gas sensor:
-            </Text>
-            <FlatList
-              style={styles.flatList}
-              data={gasList}
-              renderItem={renderItemGS}
-              keyExtractor={item => item.mq_id}
-            />
-          </Box>
+            <Box style={styles.box}>
+              <Text style={styles.textBoxes}>
+                Gas sensor:
+              </Text>
+              <FlatList
+                style={styles.flatList}
+                data={gasList}
+                renderItem={renderItemGS}
+                keyExtractor={item => item.mq_id}
+              />
+            </Box>
 
-        </ScrollView>
       </NativeBaseProvider>
     </ImageBackground>
   )
@@ -163,7 +161,7 @@ const styles = StyleSheet.create({
   box: {
     backgroundColor: "#07A875",
     width: "90%",
-    height: 310,
+    height: 260,
     alignSelf: "center",
     marginTop: 20,
     marginBottom: 20,
@@ -179,10 +177,9 @@ const styles = StyleSheet.create({
     textAlign: "left",
     fontSize: 22,
     paddingHorizontal: 15,
-    fontFamily: "Segoe UI Symbol"
+    paddingVertical: 10
   },
   flatList: {
-    marginTop: 10,
     borderRadius: 5,
     marginHorizontal: 20,
     marginBottom: 20,
@@ -192,7 +189,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#061430",
     borderRadius: 20,
     marginVertical: 5,
-    padding: 15,
+    paddingHorizontal: 20,
+    paddingVertical: 3,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -205,15 +203,13 @@ const styles = StyleSheet.create({
   text: {
     color: "black",
     fontSize: 22,
-    fontFamily: "Segoe UI Symbol",
-    fontWeight: "bold",
+    fontWeight: "bold"
   },
   textBtn: {
     fontSize: 22,
     color: "black",
     textAlign: "center",
-    fontWeight: "bold",
-    fontFamily: "Segoe UI Symbol"
+    fontWeight: "bold"
   }
 });
 

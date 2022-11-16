@@ -57,7 +57,7 @@ const GasLevels = ({ navigation }) => {
   //Get data
   //MOTION SENSOR -----------------------------------------------------------------------------------
   const getMSHistory = async () => {
-    const response = await axios.get('http://localhost/Proyecto/motionSensor.php')
+    const response = await axios.get('http://192.168.100.241/Proyecto/motionSensor.php')
     setMSList(response.data)
     console.log(response.data)
     console.log('typeof', typeof (response.data))
@@ -75,7 +75,7 @@ const GasLevels = ({ navigation }) => {
 
   //GAS SENSOR -------------------------------------------------------------------------------------
   const getGSHistory = async () => {
-    const response = await axios.get('http://localhost/Proyecto/gasSensor.php')
+    const response = await axios.get('http://192.168.100.241/Proyecto/gasSensor.php')
     setGasList(response.data)
     console.log(response.data)
     console.log('typeof', typeof (response.data))
@@ -199,8 +199,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "left",
     fontSize: 22,
-    paddingHorizontal: 15,
-    fontFamily: "Segoe UI Symbol"
+    paddingHorizontal: 15
   },
   flatList: {
     marginTop: 10,
@@ -226,15 +225,13 @@ const styles = StyleSheet.create({
   text: {
     color: "black",
     fontSize: 22,
-    fontFamily: "Segoe UI Symbol",
     fontWeight: "bold",
   },
   textBtn: {
     fontSize: 22,
     color: "black",
     textAlign: "center",
-    fontWeight: "bold",
-    fontFamily: "Segoe UI Symbol"
+    fontWeight: "bold"
   }
 });
 

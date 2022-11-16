@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Icon from "react-native-vector-icons/Ionicons";
+import Ionicons from "@expo/vector-icons/Ionicons";
 import Home from "./Home.js";
 import History from "./History.js";
 import Profile from "./Profile.js";
@@ -27,7 +27,7 @@ function Nav({ route }) {
               case 'Profile':
                 iconName = 'person'
             }
-            return <Icon name={iconName} size={25} color={focused ? "black" : "white"} />
+            return <Ionicons name={iconName} size={25} color={focused ? "black" : "white"} />
           }, 
           headerStyle: { backgroundColor: "#110542", shadowColor: "#0AE09E", shadowRadius: 5 },
           headerTintColor: "white",

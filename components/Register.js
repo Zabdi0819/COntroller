@@ -93,7 +93,7 @@ const Register = ({ navigation }) => {
 
       //npm install axios
       const response = await axios.post(
-        "http://localhost/Proyecto/index.php",
+        "http://192.168.100.241/Proyecto/index.php",
         formDataforRequest,
         {
           headers: {
@@ -148,15 +148,15 @@ const Register = ({ navigation }) => {
                 alt="COntroller"
                 alignSelf="center"
               />
-              <Heading size={"3xl"} textAlign="center" color={"white"} fontFamily={"Segoe UI Symbol"} paddingBottom={"1"}>
+              <Heading size={"3xl"} textAlign="center" color={"white"}  paddingBottom={"1"}>
                 Sign up
               </Heading>
-              <Text fontSize="xl" italic color={"white"} fontFamily={"Segoe UI Symbol"}>
+              <Text fontSize="xl" italic color={"white"}>
                 Enter your data
               </Text>
               <FormControl isRequired isInvalid={"name" in errors}>
                 <FormControl.Label>
-                  <Text color={"white"} fontWeight={"bold"} fontSize={16} fontFamily={"Segoe UI Symbol"}>
+                  <Text color={"white"} fontWeight={"bold"} fontSize={16}>
                     Name
                   </Text>
                 </FormControl.Label>
@@ -177,7 +177,7 @@ const Register = ({ navigation }) => {
                   </FormControl.ErrorMessage>
                 ) : (
                   <FormControl.HelperText>
-                    <Text color={"#D6D6D6"} fontSize={10} fontFamily={"Segoe UI Symbol"}>
+                    <Text color={"#D6D6D6"} fontSize={10}>
                       Name should contain at least 3 character.
                     </Text>
                   </FormControl.HelperText>
@@ -189,7 +189,7 @@ const Register = ({ navigation }) => {
             <Box>
               <FormControl isRequired isInvalid={"lastname" in errors}>
                 <FormControl.Label>
-                  <Text color={"white"} fontWeight={"bold"} fontSize={16} fontFamily={"Segoe UI Symbol"}>
+                  <Text color={"white"} fontWeight={"bold"} fontSize={16}>
                     Lastname
                   </Text>
                 </FormControl.Label>
@@ -211,7 +211,7 @@ const Register = ({ navigation }) => {
                   </FormControl.ErrorMessage>
                 ) : (
                   <FormControl.HelperText>
-                    <Text color={"#D6D6D6"} fontSize={10} fontFamily={"Segoe UI Symbol"}>
+                    <Text color={"#D6D6D6"} fontSize={10}>
                       Name should contain at least 3 character.
                     </Text>
                   </FormControl.HelperText>
@@ -223,7 +223,7 @@ const Register = ({ navigation }) => {
             <Box>
               <FormControl isRequired isInvalid={"phone" in errors}>
                 <FormControl.Label>
-                  <Text color={"white"} fontWeight={"bold"} fontSize={16} fontFamily={"Segoe UI Symbol"}>
+                  <Text color={"white"} fontWeight={"bold"} fontSize={16}>
                     Phone
                   </Text>
                 </FormControl.Label>
@@ -245,7 +245,7 @@ const Register = ({ navigation }) => {
                   </FormControl.ErrorMessage>
                 ) : (
                   <FormControl.HelperText>
-                    <Text color={"#D6D6D6"} fontSize={10} fontFamily={"Segoe UI Symbol"}>
+                    <Text color={"#D6D6D6"} fontSize={10}>
                       Phone should contain at least 10 digits
                     </Text>
                   </FormControl.HelperText>
@@ -257,7 +257,7 @@ const Register = ({ navigation }) => {
             <Box>
               <FormControl isRequired isInvalid={"email" in errors}>
                 <FormControl.Label>
-                  <Text color={"white"} fontWeight={"bold"} fontSize={16} fontFamily={"Segoe UI Symbol"}>
+                  <Text color={"white"} fontWeight={"bold"} fontSize={16}>
                     Email
                   </Text>
                 </FormControl.Label>
@@ -279,7 +279,7 @@ const Register = ({ navigation }) => {
                   </FormControl.ErrorMessage>
                 ) : (
                   <FormControl.HelperText>
-                    <Text color={"#D6D6D6"} fontSize={10} fontFamily={"Segoe UI Symbol"}>
+                    <Text color={"#D6D6D6"} fontSize={10}>
                       The email must contain an @
                     </Text>
                   </FormControl.HelperText>
@@ -291,7 +291,7 @@ const Register = ({ navigation }) => {
             <Box>
               <FormControl isRequired isInvalid={"password" in errors}>
                 <FormControl.Label>
-                  <Text color={"white"} fontWeight={"bold"} fontSize={16} fontFamily={"Segoe UI Symbol"}>
+                  <Text color={"white"} fontWeight={"bold"} fontSize={16}>
                     Password
                   </Text>
                 </FormControl.Label>
@@ -314,7 +314,7 @@ const Register = ({ navigation }) => {
                   </FormControl.ErrorMessage>
                 ) : (
                   <FormControl.HelperText>
-                    <Text color={"#D6D6D6"} fontSize={"10pt"} fontFamily={"Segoe UI Symbol"}>
+                    <Text color={"#D6D6D6"} fontSize={10}>
                       We'll keep this between us
                     </Text>
                   </FormControl.HelperText>
@@ -376,8 +376,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
     color: "black",
     textAlign: "center",
-    fontWeight: "bold",
-    fontFamily: "Segoe UI Symbol"
+    fontWeight: "bold"
   },
   logo: {
     height: "120px",

@@ -68,7 +68,7 @@ const Login = ({ navigation }) => {
 
     //npm install axios
     const response = await axios.post(
-      "http://192.168.0.19/Proyecto/login.php",
+      "http://192.168.100.241/Proyecto/login.php",
       formDataforRequest,
       {
         headers: {
@@ -199,7 +199,7 @@ const Login = ({ navigation }) => {
             <Box>
               <Button
                 style={{ shadowColor: "black", shadowRadius: 10 }}
-                backgroundColor="primary.50"
+                backgroundColor="#07AB77"
                 marginTop="5"
                 borderRadius={"md"}
                 borderColor="#50e8cc"

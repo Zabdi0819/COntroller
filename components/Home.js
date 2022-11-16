@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import useUsers from "../hooks/useUsers";
 import { Text, Switch, NativeBaseProvider, ScrollView, Heading, Box, Button } from 'native-base';
 import { ImageBackground, StyleSheet, View } from "react-native";
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { MdSensors } from "react-icons/md";
 import { GiGasStove } from "react-icons/gi";
 import axios from "axios";
@@ -26,7 +27,7 @@ const Home = () => {
     if (!isEnabledM) {
       setTextM('ON');
       formDataforRequest.append('state', 'ON')
-      const response = await axios.post('http://localhost/Proyecto/motionSensor.php',
+      const response = await axios.post('http://192.168.100.241/Proyecto/motionSensor.php',
         formDataforRequest,
         {
           headers: { 'Content-Type': 'multipart/form-data', 'Access-Control-Allow-Origin': '*' }
@@ -37,7 +38,7 @@ const Home = () => {
     } else {
       setTextM('OFF');
       formDataforRequest.append('state', 'OFF')
-      const response = await axios.post('http://localhost/Proyecto/motionSensor.php',
+      const response = await axios.post('http://192.168.100.241/Proyecto/motionSensor.php',
         formDataforRequest,
         {
           headers: { 'Content-Type': 'multipart/form-data', 'Access-Control-Allow-Origin': '*' }
@@ -56,7 +57,7 @@ const Home = () => {
     if (!isEnabledCO) {
       setTextCO('ON');
       formDataforRequest.append('state', 'ON')
-      const response = await axios.post('http://localhost/Proyecto/gasSensor.php',
+      const response = await axios.post('http://192.168.100.241/Proyecto/gasSensor.php',
         formDataforRequest,
         {
           headers: { 'Content-Type': 'multipart/form-data', 'Access-Control-Allow-Origin': '*' }
@@ -66,7 +67,7 @@ const Home = () => {
     } else {
       setTextCO('OFF');
       formDataforRequest.append('state', 'OFF')
-      const response = await axios.post('http://localhost/Proyecto/gasSensor.php',
+      const response = await axios.post('http://192.168.100.241/Proyecto/gasSensor.php',
         formDataforRequest,
         {
           headers: { 'Content-Type': 'multipart/form-data', 'Access-Control-Allow-Origin': '*' }
@@ -87,7 +88,7 @@ const Home = () => {
           <Box style={styles.box}>
             <Text style={styles.textStatus}> Motion sensor: {textM}</Text>
             <View style={styles.OnOff} alignSelf="center">
-              <MdSensors color={"black"} fontSize={"80px"} />
+              <MaterialCommunityIcons name="motion-sensor" color={"black"} size={80} />
               <Switch
                 size={"lg"}
                 trackColor={{ false:"white", true: "#1F1E38" }}
@@ -101,7 +102,7 @@ const Home = () => {
           <Box style={styles.box}>
             <Text style={styles.textStatus}>Gas sensor: {textCO}</Text>
             <View style={styles.OnOff} alignSelf="center">
-              <GiGasStove color={"black"} fontSize={"80px"} />
+              <MaterialCommunityIcons name="gas-cylinder" color={"black"} size={80} />
               <Switch
                 size={"lg"}
                 trackColor={{ false: "white", true: "#1F1E38" }}
@@ -159,7 +160,6 @@ const styles = StyleSheet.create({
   text: {
     color: "white",
     fontSize: 22,
-    fontFamily: "Segoe UI Symbol",
     fontWeight: "bold",
   },
   OnOff: {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import useUsers from "../hooks/useUsers";
-import { ImageBackground, StyleSheet } from "react-native";
+import { ImageBackground, StyleSheet, ToastAndroid, Alert } from "react-native";
 import {
   Box, Button, ScrollView, Stack, Divider, Text, FormControl, Input, Image, Center,
   NativeBaseProvider, Fab, Icon, Heading,
@@ -126,6 +126,10 @@ const Profile = ({ navigation }) => {
 
       if (Object.keys(response.data).length >= 1) {
         console.log("email", response.data[0].email);
+        ToastAndroid.show(
+          "Updated information successfully",
+          ToastAndroid.SHORT,
+          ToastAndroid.BOTTOM);
       } else {
         console.log("retry");
       }
@@ -161,6 +165,10 @@ const Profile = ({ navigation }) => {
         }
       }
     );
+    ToastAndroid.show(
+      "Account deleted successfully",
+      ToastAndroid.SHORT,
+      ToastAndroid.BOTTOM);
     navigation.navigate("Login");
   }
 
@@ -399,7 +407,23 @@ const Profile = ({ navigation }) => {
                 alignSelf="center"
                 width= "200"
                 height= "50"
-                onPress={deleteAccount}
+                onPress={()=> {
+                  Alert.alert(
+                    'Your account will be deleted',
+                    'Are you sure?',
+                    [
+                      {
+                        text: 'OK',
+                        onPress: () => deleteAccount(),
+  
+                      },
+                      {
+                        text: 'CANCEL',
+                        style: 'destructive'
+                      }
+                    ], { cancelable: false }
+                  );
+                }}
               >
                 <Text style={styles.text}>Delete account</Text>
               </Button>

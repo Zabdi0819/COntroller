@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ImageBackground, StyleSheet } from "react-native";
+import { ImageBackground, StyleSheet, ToastAndroid } from "react-native";
 import {
   Box, Button, ScrollView, Stack, Divider, Text, FormControl, Input, Image, Center, NativeBaseProvider,
   Heading,
@@ -85,8 +85,13 @@ const Login = ({ navigation }) => {
 
     if (Object.keys(response.data).length >= 1) {
       console.log("email: ", response.data[0].email);
+      ToastAndroid.show(
+        "Welcome!",
+        ToastAndroid.SHORT,
+        ToastAndroid.BOTTOM);
       navigation.navigate("Nav", { email: response.data[0].email });
       console.log("navigation", "ok");
+      
     } else {
       console.log("retry");
     }

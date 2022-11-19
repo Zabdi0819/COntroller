@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ImageBackground, StyleSheet } from "react-native";
+import { ImageBackground, StyleSheet, ToastAndroid } from "react-native";
 import {
   Box, Button, ScrollView, Stack, Divider, Text, FormControl, Input, Image, Center,
   NativeBaseProvider, Fab, Icon, Heading,
@@ -110,6 +110,10 @@ const Register = ({ navigation }) => {
 
       if (Object.keys(response.data).length >= 1) {
         console.log("email", response.data[0].email);
+        ToastAndroid.show(
+          "Data registered successfully",
+          ToastAndroid.SHORT,
+          ToastAndroid.BOTTOM);
         navigation.navigate("Login");
         console.log("navigation", "ok");
       } else {

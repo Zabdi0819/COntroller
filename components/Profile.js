@@ -26,7 +26,7 @@ const Profile = ({ navigation }) => {
   const getUser = async () => {
     const formDataforRequest = new FormData()
     formDataforRequest.append('email', email)
-    const response = await axios.get("http://192.168.100.241/Proyecto/index.php?email=" + email)
+    const response = await axios.get("http://192.168.0.20/Proyecto/index.php?email=" + email)
     console.log(response.data)
     setFormData({
       name: response.data[0]["name"],
@@ -109,7 +109,7 @@ const Profile = ({ navigation }) => {
 
       //npm install axios
       const response = await axios.post(
-        "http://192.168.100.241/Proyecto/profile.php",
+        "http://192.168.0.20/Proyecto/profile.php",
         formDataforRequest,
         {
           headers: {
@@ -152,7 +152,7 @@ const Profile = ({ navigation }) => {
 
     //npm install axios
     const response = await axios.post(
-      "http://192.168.100.241/Proyecto/profile.php",
+      "http://192.168.0.20/Proyecto/profile.php",
       formDataforRequest,
       {
         headers: {

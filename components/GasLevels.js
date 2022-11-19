@@ -4,44 +4,24 @@ import { Text, View, NativeBaseProvider, ScrollView, Box, FlatList, Button, Stac
 import axios from "axios";
 import { Ionicons } from "@expo/vector-icons";
 
-//MOTION SENSOR ITEMS -------------------------------------------------------------------
-const ItemMS = (props) => (
-  <NativeBaseProvider>
-    <View style={styles.cardView}>
-      <Text style={{ textTransform: 'uppercase', fontWeight: 'bold', color: 'white' }}>
-        {props.pir_id}
-      </Text>
-      <Text style={{ textTransform: 'uppercase', color: 'white' }} >
-        <b>State: </b>{" " + props.state}
-      </Text>
-      <Text style={{ textTransform: 'uppercase', color: 'white' }} >
-        <b>Date Time: </b>{" " + props.date_time}
-      </Text>
-      <Text style={{ textTransform: 'uppercase', color: 'white' }} >
-        <b>User: </b>{" " + props.name + " " + props.last_name}
-      </Text>
-
-    </View>
-  </NativeBaseProvider>
-
-);
 
 //GAS SENSOR ITEMS --------------------------------------------------------------------------
 const ItemGS = (props) => (
   <NativeBaseProvider>
     <View style={styles.cardView}>
       <Text style={{ textTransform: 'uppercase', fontWeight: 'bold', color: 'white' }}>
-        {props.mq_id}
+        {props.id}
       </Text>
       <Text style={{ textTransform: 'uppercase', color: 'white' }} >
-        <b>State: </b>{" " + props.state}
+        <Text fontWeight={"bold"}>Value: </Text>{" " + props.value}
       </Text>
       <Text style={{ textTransform: 'uppercase', color: 'white' }} >
-        <b>Date Time: </b>{" " + props.date_time}
+        <Text fontWeight={"bold"}>State: </Text>{" " + props.state}
       </Text>
       <Text style={{ textTransform: 'uppercase', color: 'white' }} >
-        <b>User: </b>{" " + props.name + " " + props.last_name}
+        <Text fontWeight={"bold"}>Date Time: </Text>{" " + props.date_time}
       </Text>
+
 
     </View>
   </NativeBaseProvider>
@@ -51,31 +31,12 @@ const ItemGS = (props) => (
 
 const GasLevels = ({ navigation }) => {
   const imageBG = require("../assets/Bg_login.jpg");
-  const [msList, setMSList] = useState({})
   const [gasList, setGasList] = useState({})
 
   //Get data
-  //MOTION SENSOR -----------------------------------------------------------------------------------
-  const getMSHistory = async () => {
-    const response = await axios.get('http://192.168.100.241/Proyecto/motionSensor.php')
-    setMSList(response.data)
-    console.log(response.data)
-    console.log('typeof', typeof (response.data))
-  };
-
-  const renderItemMS = ({ item }) => (
-    <ItemMS
-      pir_id={item.pir_id}
-      state={item.state}
-      date_time={item.date_time}
-      name={item.name}
-      last_name={item.last_name}
-    />
-  )
-
   //GAS SENSOR -------------------------------------------------------------------------------------
   const getGSHistory = async () => {
-    const response = await axios.get('http://192.168.100.241/Proyecto/gasSensor.php')
+    const response = await axios.get('http://192.168.0.20/Proyecto/gasLevel.php')
     setGasList(response.data)
     console.log(response.data)
     console.log('typeof', typeof (response.data))
@@ -83,89 +44,72 @@ const GasLevels = ({ navigation }) => {
 
   const renderItemGS = ({ item }) => (
     <ItemGS
-      mq_id={item.mq_id}
+      id={item.id}
+      value={item.value}
       state={item.state}
       date_time={item.date_time}
-      name={item.name}
-      last_name={item.last_name}
     />
   )
 
   const refresh = () => {
-    getMSHistory();
     getGSHistory();
   };
 
   useEffect(() => {
-    getMSHistory();
     getGSHistory();
   }, [])
 
   return (
     <ImageBackground source={imageBG} resizeMode="cover" style={styles.image}>
       <NativeBaseProvider>
-        <ScrollView w="100%">
-          <Stack>
-          <Box>
-            <Button
-              style={{ shadowColor: "black", shadowRadius: 10 }}
-              backgroundColor="#0AE09E"
-              marginTop="5"
-              borderRadius={"md"}
-              borderColor="#50e8cc"
-              alignSelf="center"
-              width={"40"}
-              height={"10"}
-              onPress={refresh}
-            >
-              <Text style={styles.text}>Refresh</Text>
-            </Button>
-          </Box>
-
-          <Box style={styles.box}>
-            <Text style={styles.textBoxes}>
-              Motion sensor:
-            </Text>
-            <FlatList
-              style={styles.flatList}
-              data={msList}
-              renderItem={renderItemMS}
-              keyExtractor={item => item.pir_id}
-            />
-          </Box>
-
-          <Box style={styles.box}>
-            <Text style={styles.textBoxes}>
-              Gas sensor:
-            </Text>
-            <FlatList
-              style={styles.flatList}
-              data={gasList}
-              renderItem={renderItemGS}
-              keyExtractor={item => item.mq_id}
-            />
-          </Box>
-
-          </Stack>
-          <Fab
-            backgroundColor={"#05a27b"}
-            mt={"20px"}
-            onPress={() => navigation.goBack()}
-            renderInPortal={false}
-            shadow={2}
-            size="4"
-            placement="top-left"
-            icon={
-              <Icon
-                color="white"
-                as={Ionicons}
-                name="chevron-back"
-                size="4"
-                margin={"-2"}
-              />
-            }
+        <Stack
+        alignSelf="center"
+        px="4"
+        safeArea
+        mt="10"
+        marginTop="10"
+        marginBottom="5"
+        w={{ base: "100%", md: "50%" }}>
+        <Button
+            style={{ shadowColor: "black", shadowRadius: 10 }}
+            backgroundColor="#0AE09E"
+            marginTop="15"
+            marginBottom="10"
+            borderRadius={"md"}
+            borderColor="#50e8cc"
+            alignSelf="center"
+            width={"40"}
+            height={"10"}
+            onPress={refresh}
+          >
+            <Text style={styles.text}>Refresh</Text>
+          </Button>
+        </Stack>
+        
+          <FlatList
+            style={styles.flatList}
+            data={gasList}
+            renderItem={renderItemGS}
+            keyExtractor={item => item.id}
           />
-        </ScrollView>
+        <Fab
+          backgroundColor={"#05a27b"}
+          mt={"20px"}
+          onPress={() => navigation.goBack()}
+          renderInPortal={false}
+          shadow={2}
+          size="4"
+          placement="top-left"
+          icon={
+            <Icon
+              color="white"
+              as={Ionicons}
+              name="chevron-back"
+              size="4"
+              margin={"-2"}
+            />
+          }
+        />
       </NativeBaseProvider>
     </ImageBackground>
   )
@@ -182,7 +126,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   box: {
-    backgroundColor: "#07A875",
+    backgroundColor: "white",
     width: "90%",
     height: 310,
     alignSelf: "center",

@@ -31,7 +31,7 @@ function Nav({ route }) {
           }, 
           headerStyle: { backgroundColor: "#110542", shadowColor: "#0AE09E", shadowRadius: 5 },
           headerTintColor: "white",
-          headerTitleStyle: { fontWeight: "bold", fontSize: 12 },
+          headerTitleStyle: { fontWeight: "bold", fontSize: 22 },
           tabBarActiveTintColor: "#000",
           tabBarInactiveTintColor: "#FFF",
           tabBarActiveBackgroundColor: "#0AE09E",

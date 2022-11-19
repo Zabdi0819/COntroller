@@ -331,8 +331,8 @@ const Register = ({ navigation }) => {
                 borderWidth={"2"}
                 borderColor="#50e8cc"
                 alignSelf="center"
-                width="60%"
-                height="60%"
+                width= "200"
+                height= "50"
                 onPress={onSumit}
               >
                 <Text style={styles.textBtn}>Register </Text>

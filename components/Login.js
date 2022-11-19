@@ -132,6 +132,7 @@ const Login = ({ navigation }) => {
                   fontSize={12}
                   placeholderTextColor={"#D6D6D6"}
                   placeholder="Email"
+                  defaultValue={formData.email}
                   onChangeText={(value) =>
                     setFormData({ ...formData, email: value })
                   }
@@ -166,6 +167,7 @@ const Login = ({ navigation }) => {
                   fontSize={12}
                   placeholderTextColor={"#D6D6D6"}
                   placeholder={"Password"}
+                  defaultValue={formData.password}
                   onChangeText={(value) =>
                     setFormData({ ...formData, password: value })
                   }

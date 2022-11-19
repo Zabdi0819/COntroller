@@ -125,6 +125,7 @@ const Profile = ({ navigation }) => {
       console.log("Object", response.data);
 
       if (Object.keys(response.data).length >= 1) {
+        getUser();
         console.log("email", response.data[0].email);
         ToastAndroid.show(
           "Updated information successfully",
@@ -145,6 +146,10 @@ const Profile = ({ navigation }) => {
   };
 
   const logOut = () => {
+    ToastAndroid.show(
+      "See you!",
+      ToastAndroid.SHORT,
+      ToastAndroid.BOTTOM);
     navigation.navigate("Login");
   }
 
@@ -206,7 +211,6 @@ const Profile = ({ navigation }) => {
                   fontSize={12}
                   placeholderTextColor={"#D6D6D6"}
                   placeholder="Name"
-                  defaultValue={formData.name}
                   onChangeText={(value) =>
                     setFormData({ ...formData, name: value })
                   }
@@ -241,7 +245,6 @@ const Profile = ({ navigation }) => {
                   fontSize={12}
                   placeholderTextColor={"#D6D6D6"}
                   placeholder="Lastname"
-                  defaultValue={formData.lastname}
                   onChangeText={(value) =>
                     setFormData({ ...formData, lastname: value })
                   }

@@ -36,7 +36,7 @@ const GasLevels = ({ navigation }) => {
   //Get data
   //GAS SENSOR -------------------------------------------------------------------------------------
   const getGSHistory = async () => {
-    const response = await axios.get('http://192.168.0.20/Proyecto/gasLevel.php')
+    const response = await axios.get('http://localhost:3307/Proyecto/gasLevel.php')
     setGasList(response.data)
     console.log(response.data)
     console.log('typeof', typeof (response.data))

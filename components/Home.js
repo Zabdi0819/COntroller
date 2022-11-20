@@ -27,7 +27,7 @@ const Home = () => {
     if (!isEnabledM) {
       setTextM('ON');
       formDataforRequest.append('state', 'ON')
-      const response = await axios.post('http://192.168.0.20/Proyecto/motionSensor.php',
+      const response = await axios.post('http://localhost:3307/Proyecto/motionSensor.php',
         formDataforRequest,
         {
           headers: { 'Content-Type': 'multipart/form-data', 'Access-Control-Allow-Origin': '*' }
@@ -38,7 +38,7 @@ const Home = () => {
     } else {
       setTextM('OFF');
       formDataforRequest.append('state', 'OFF')
-      const response = await axios.post('http://192.168.0.20/Proyecto/motionSensor.php',
+      const response = await axios.post('http://localhost:3307/Proyecto/motionSensor.php',
         formDataforRequest,
         {
           headers: { 'Content-Type': 'multipart/form-data', 'Access-Control-Allow-Origin': '*' }
@@ -57,7 +57,7 @@ const Home = () => {
     if (!isEnabledCO) {
       setTextCO('ON');
       formDataforRequest.append('state', 'ON')
-      const response = await axios.post('http://192.168.0.20/Proyecto/gasSensor.php',
+      const response = await axios.post('http://localhost:3307/Proyecto/gasSensor.php',
         formDataforRequest,
         {
           headers: { 'Content-Type': 'multipart/form-data', 'Access-Control-Allow-Origin': '*' }
@@ -67,7 +67,7 @@ const Home = () => {
     } else {
       setTextCO('OFF');
       formDataforRequest.append('state', 'OFF')
-      const response = await axios.post('http://192.168.0.20/Proyecto/gasSensor.php',
+      const response = await axios.post('http://localhost:3307/Proyecto/gasSensor.php',
         formDataforRequest,
         {
           headers: { 'Content-Type': 'multipart/form-data', 'Access-Control-Allow-Origin': '*' }

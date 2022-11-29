@@ -3,6 +3,7 @@ import { NativeBaseProvider, extendTheme } from 'native-base'
 import Login from './components/Login.js';
 import Register from "./components/Register.js";
 import Nav from './components/Nav.js';
+import Config from "./components/Config.js";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -39,6 +40,7 @@ export default function App() {
           <StackNav.Screen name="Sign up" options={{ headerShown: false }} component={Register} />
           <StackNav.Screen options={{ headerShown: false }} name="Nav" component={Nav} />
           <StackNav.Screen options={{ headerShown: false }} name="GasLevels" component={GasLevels} />
+          <StackNav.Screen options={{ headerShown: false }} name="Config" component={Config} />
         </StackNav.Navigator>
       </NavigationContainer>
     </NativeBaseProvider >

@@ -56,7 +56,7 @@ const History = () => {
   //Get data
   //MOTION SENSOR -----------------------------------------------------------------------------------
   const getMSHistory = async () => {
-    const response = await axios.get('http://localhost:3307/Proyecto/motionSensor.php')
+    const response = await axios.get('http://192.168.43.177/Proyecto/motionSensor.php')
     setMSList(response.data)
     console.log(response.data)
     console.log('typeof', typeof (response.data))
@@ -74,7 +74,7 @@ const History = () => {
 
   //GAS SENSOR -------------------------------------------------------------------------------------
   const getGSHistory = async () => {
-    const response = await axios.get('http://localhost:3307/Proyecto/gasSensor.php')
+    const response = await axios.get('http://192.168.43.177/Proyecto/gasSensor.php')
     setGasList(response.data)
     console.log(response.data)
     console.log('typeof', typeof (response.data))

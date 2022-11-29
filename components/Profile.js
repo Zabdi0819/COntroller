@@ -26,7 +26,7 @@ const Profile = ({ navigation }) => {
   const getUser = async () => {
     const formDataforRequest = new FormData()
     formDataforRequest.append('email', email)
-    const response = await axios.get("http://localhost:3307/Proyecto/index.php?email=" + email)
+    const response = await axios.get("http://192.168.43.177/Proyecto/index.php?email=" + email)
     console.log(response.data)
     setFormData({
       name: response.data[0]["name"],
@@ -109,7 +109,7 @@ const Profile = ({ navigation }) => {
 
       //npm install axios
       const response = await axios.post(
-        "http://localhost:3307/Proyecto/profile.php",
+        "http://192.168.43.177/Proyecto/profile.php",
         formDataforRequest,
         {
           headers: {
@@ -161,7 +161,7 @@ const Profile = ({ navigation }) => {
 
     //npm install axios
     const response = await axios.post(
-      "http://localhost:3307/Proyecto/profile.php",
+      "http://192.168.43.177/Proyecto/profile.php",
       formDataforRequest,
       {
         headers: {
@@ -211,6 +211,7 @@ const Profile = ({ navigation }) => {
                   fontSize={12}
                   placeholderTextColor={"#D6D6D6"}
                   placeholder="Name"
+                  defaultValue={formData.name}
                   onChangeText={(value) =>
                     setFormData({ ...formData, name: value })
                   }
@@ -245,6 +246,7 @@ const Profile = ({ navigation }) => {
                   fontSize={12}
                   placeholderTextColor={"#D6D6D6"}
                   placeholder="Lastname"
+                  defaultValue={formData.lastname}
                   onChangeText={(value) =>
                     setFormData({ ...formData, lastname: value })
                   }

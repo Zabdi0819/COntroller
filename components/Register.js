@@ -93,7 +93,7 @@ const Register = ({ navigation }) => {
 
       //npm install axios
       const response = await axios.post(
-        "http://localhost:3307/Proyecto/index.php",
+        "http://192.168.43.177/Proyecto/index.php",
         formDataforRequest,
         {
           headers: {

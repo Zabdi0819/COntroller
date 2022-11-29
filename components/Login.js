@@ -68,7 +68,7 @@ const Login = ({ navigation }) => {
 
     //npm install axios
     const response = await axios.post(
-      "http://localhost:3307/Proyecto/login.php",
+      "http://192.168.43.177/Proyecto/login.php",
       formDataforRequest,
       {
         headers: {
